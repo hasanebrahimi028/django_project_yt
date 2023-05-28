@@ -1,0 +1,43 @@
+{% extends 'rental/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+  <div class="row mt-3 d-flex justify-content-center">
+    <h3 class="text-center mb-4">List of Books</h3>
+    {% for book in books %}
+    <div class="col-lg-3 col-md-4 colo-sm-6 col m-2">
+      <div class="card" style="width: 18rem;">
+        <!-- <img src="..." class="card-img-top" alt="..."> -->
+        <div class="card-body">
+          <h5 class="card-title">{{ book.title }}</h5>
+          <p class="card-text">Author: {{ book.author }}</p>
+          <a href="{{ book.get_absolute_url }}">{{ book.title }}</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <!__ paginator __>
+  {% if is_paginated %}
+  <ul class="pagination">
+    {% if book_obj.has_previous %}
+    <li>
+        <span><a href="?book={{ book_obj.previous_book_number }}">Previous</a></span>
+    </li>
+    {% endif %}
+    <li class="">
+        <span>Book {{ book_obj.number }} of {{ book_obj.paginator.num_books }}.</span>
+    </li>
+    <li>
+        <span> <a href="?book{{ book_obj.next_bool_number }}">Next</a></span>
+    </li>
+  {% endif %}
+  </ul>
+
+  <h3>طراح سایت : حسن ابراهیمی</h3>
+  <p>ممنون از انتخاب خوبتون</p>
+  <!__ end paginator __>
+</div>
+{% endblock content %}

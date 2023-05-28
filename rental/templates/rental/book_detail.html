@@ -1,0 +1,11 @@
+{% extends 'rental/base.html' %}
+{% load static %}
+{% block content %}
+<body>
+    <h1>جزییات اجاره کتاب</h1>
+    <p>:نام کتاب  {{ rental.book.title }}</p>
+    <p>:نام عضو  {{ rental.member.name }}</p>
+    <p>:تاریخ اجاره  {{ rental.rental_date }}</p>
+    <p>:تاریخ برگشت  {{ rental.return_date }}</p>
+</body>
+{% endblock content %}
